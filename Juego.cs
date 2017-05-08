@@ -51,16 +51,6 @@ namespace ProyectoFinal
             this.ataque = ataque;
             this.vida = vida;
             this.nombre = nombre;
-            new wisp() = Cartas(0, 1, 1, wisp);
-            new murlocRider() = Cartas(1, 1, 2, murlocRider);
-            new bloodfenRaptor() = Cartas(2, 3, 2, bloodfenRaptor);
-            new riverCrocolisk() = Cartas(2, 2, 3, riverCrocolisk);
-            new magmaRager() = Cartas(3, 5, 1, magmaRager);
-            new chillwindYeti() = Cartas(4, 4, 5, chillwindYeti);
-            new oasisSnapjaw() = Cartas(4, 2, 7, oasisSnapjaw);
-            new boulderfistOgre() = Cartas(6, 6, 7, boulderfistOgre);
-            new warGolem() = Cartas(7, 7, 7, warGolem);
-            new coreHound() = Cartas(7, 9, 5, coreHound);
         }
 
         public void Atacar ()
