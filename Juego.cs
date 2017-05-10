@@ -120,6 +120,75 @@ namespace ProyectoFinal
         static void Main(string[] args)
         {
             Console.WriteLine("Bienvenido a HearthStone, ingresen sus nombres: ");
+            Console.WriteLine("Jugador 1:");
+            string name1 = Console.ReadLine();
+
+            Console.WriteLine("Jugador 2:");
+            string name2 = Console.ReadLine();
+
+            Console.WriteLine(name1 + ", ¿Seras Hunter o Warrior?");
+            string heroe1 = Console.ReadLine();
+
+            Console.WriteLine(name2 + ", ¿Seras Hunter o Warrior?");
+            string heroe2 = Console.ReadLine();
+
+            List<Cartas> Mazo1 = new List<Cartas>();
+            List<Cartas> Mazo2 = new List<Cartas>();
+
+            List<Cartas> Mano1 = new List<Cartas> ();
+            List<Cartas> Mano2 = new List<Cartas>();
+
+            Jugador Jugador1 = new Jugador(30, 0, Mano1, Mazo1, name1, heroe1);
+            Jugador Jugador2 = new Jugador(30, 0, Mano2, Mazo2, name2, heroe2);
+
+            Console.WriteLine("Comienza el juego");
+            bool condicionJuego = true;
+            List<Cartas> TableroJugador1 = new List<Cartas>();
+            List <Cartas> TableroJugador2 = new List<Cartas>(); 
+            Random rmd = new Random();
+            int turno = rmd.Next (0,2);
+
+            while (condicionJuego)
+            {
+              if (turno == 0)
+                {
+                    Jugador1.ManaGrowth();
+                    bool condicionTurno = true;
+
+                    while (condicionTurno)
+                    {
+                        Console.WriteLine("Turno de " + Jugador1.nombre);
+                        Console.WriteLine("¿Que desea hacer?");
+                        Console.WriteLine("(1) Jugar una carta de la mano");
+                        Console.WriteLine("(2) Atacar");
+                        Console.WriteLine("(3) Usar el poder");
+                        Console.WriteLine("(4) Terminar el turno");
+                        string decision1 = Console.ReadLine();
+
+                        if (decision1 == "1")
+                        {
+                            for (int i = 0; i < Mano1.Count; i++)
+                            {
+                                Console.WriteLine("["+i+"]"+Mano1 [i]);
+                            }
+                            Console.WriteLine("Elija el numero de carta que desea jugar");
+                            string numeroDeCarta = Console.ReadLine();
+                            int numeroDeCarta1 = int32.parse (numeroDeCarta);
+                            Tablero.JugarCartas(Jugador1, TableroJugador1);
+                        }
+                        else if (decision1 == "2")
+                        {
+                            for (int i = 0; i < Mano1.Count; i++)
+                            {
+                                Console.WriteLine("[" + i + "]" + Mano1[i]);
+                            }
+                            Console.WriteLine("Elija el numero de carta que desee que ataque");
+                            string 
+                        }
+                    }
+                    
+
+                }
         }
     }
 }
