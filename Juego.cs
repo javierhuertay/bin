@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace ProyectoFinal
 {
     interface iMetodos
@@ -11,8 +12,35 @@ namespace ProyectoFinal
         void TerminarTurno();
         void Draw();
     }
+
+    class Hunter
+    {
+        int costo;
+        string nombre;
+        int damage;
+        void hunter(int costo,string nombre, int damage)
+        {
+            this.costo = 2;
+            this.nombre = nombre;
+            this.damage = 2;
+        }
+    }
+    class Warrior
+    {
+        int costo;
+        string nombre;
+        int armadura;
+        void warrior(int costo, string nombre, int armadura)
+        {
+            this.costo = 2;
+            this.nombre = nombre;
+            armadura += 2;
+        }
+
+    }
     public class Jugador
     {
+
         public int vida;
         public int mana;
         public List<Cartas> mano;
@@ -30,7 +58,11 @@ namespace ProyectoFinal
         }
         public void ManaGrowth()
         {
-
+            mana += 1;
+            if (mana > 10)
+            {
+                mana = 10;
+            }
         }
 
 
@@ -40,6 +72,9 @@ namespace ProyectoFinal
 
     public class Cartas : iMetodos
     {
+        Random rnd = new Random();
+        public List<Cartas> mano;
+        public List<Cartas> mazo;
         int costo;
         int ataque;
         int vida;
@@ -55,6 +90,7 @@ namespace ProyectoFinal
         Cartas boulderfistOgre;
         Cartas warGolem;
         Cartas coreHound;
+        List<Cartas> listaCartas = new List<Cartas>();
 
         public Cartas(int costo, int ataque, int vida)
         {
@@ -71,21 +107,53 @@ namespace ProyectoFinal
             boulderfistOgre = new Cartas(6, 6, 7);
             warGolem = new Cartas(7, 7, 7);
             coreHound = new Cartas(7, 9, 5);
-
+            listaCartas.Add(wisp);
+            listaCartas.Add(murlocRaider);
+            listaCartas.Add(bloodfenRaptor);
+            listaCartas.Add(riverCrocolisk);
+            listaCartas.Add(magmaRager);
+            listaCartas.Add(chillwindYeti);
+            listaCartas.Add(oasisSnapjaw);
+            listaCartas.Add(boulderfistOgre);
+            listaCartas.Add(warGolem);
+            listaCartas.Add(coreHound);
         }
-        public void Atacar ()
+
+        public void Atacar()
         {
             // primero vemos a quien se ataca, si se ataca a carta o heroe
             // si se ataca a carta hacerlo directamente
             // si se ataca a heroe hacerlo a traves de la interfaz
         }
-        public void TerminarTurno ()
+        public void TerminarTurno()
         {
 
         }
-        public void Draw ()
+        public void Draw()
         {
+            int r = rnd.Next(listaCartas.Count);
+            if (mano.Count > 10)
+            {
+                mano.Add(listaCartas[r]);
+            }
             // sacar una carta al azar del mazo y ponerla en la mano al principio de cada turno.
+        }
+        public void crearMazo()
+        {
+            while (mazo.Count <= 30)
+            {
+                int r = rnd.Next(listaCartas.Count);
+                mazo.Add(listaCartas[r]);
+            }
+        }
+        public void crearMano()
+        {
+            while (mano.Count <= 10)
+            {
+                int r = rnd.Next(listaCartas.Count);
+                mano.Add(mazo[r]);
+            }
+
         }
     }
 
@@ -95,8 +163,8 @@ namespace ProyectoFinal
         public List<Cartas> TableroJugador2;
         public Jugador Jugador1;
         public Jugador Jugador2;
-        
-        public Tablero (List <Cartas> TableroJugador1, List <Cartas> TableroJugador2, Jugador Jugador1, Jugador Jugador2)
+
+        public Tablero(List<Cartas> TableroJugador1, List<Cartas> TableroJugador2, Jugador Jugador1, Jugador Jugador2)
         {
             this.TableroJugador1 = TableroJugador1;
             this.TableroJugador2 = TableroJugador2;
@@ -104,7 +172,7 @@ namespace ProyectoFinal
             this.Jugador2 = Jugador2;
         }
 
-        public void JugarCartas (Jugador Jugador, List <Cartas> TableroJugador)
+        public void JugarCartas(Jugador Jugador, List<Cartas> TableroJugador)
         {
 
         }
@@ -112,7 +180,7 @@ namespace ProyectoFinal
 
 
     }
-    
+
 
 
     class Program
@@ -135,7 +203,7 @@ namespace ProyectoFinal
             List<Cartas> Mazo1 = new List<Cartas>();
             List<Cartas> Mazo2 = new List<Cartas>();
 
-            List<Cartas> Mano1 = new List<Cartas> ();
+            List<Cartas> Mano1 = new List<Cartas>();
             List<Cartas> Mano2 = new List<Cartas>();
 
             Jugador Jugador1 = new Jugador(30, 0, Mano1, Mazo1, name1, heroe1);
@@ -144,13 +212,13 @@ namespace ProyectoFinal
             Console.WriteLine("Comienza el juego");
             bool condicionJuego = true;
             List<Cartas> TableroJugador1 = new List<Cartas>();
-            List <Cartas> TableroJugador2 = new List<Cartas>(); 
+            List<Cartas> TableroJugador2 = new List<Cartas>();
             Random rmd = new Random();
-            int turno = rmd.Next (0,2);
+            int turno = rmd.Next(0, 2);
 
             while (condicionJuego)
             {
-              if (turno == 0)
+                if (turno == 0)
                 {
                     Jugador1.ManaGrowth();
                     bool condicionTurno = true;
@@ -169,11 +237,11 @@ namespace ProyectoFinal
                         {
                             for (int i = 0; i < Mano1.Count; i++)
                             {
-                                Console.WriteLine("["+i+"]"+Mano1 [i]);
+                                Console.WriteLine("[" + i + "]" + Mano1[i]);
                             }
                             Console.WriteLine("Elija el numero de carta que desea jugar");
                             string numeroDeCarta = Console.ReadLine();
-                            int numeroDeCarta1 = int32.parse (numeroDeCarta);
+                            int numeroDeCarta1 = int32.parse(numeroDeCarta);
                             Tablero.JugarCartas(Jugador1, TableroJugador1);
                         }
                         else if (decision1 == "2")
@@ -183,12 +251,14 @@ namespace ProyectoFinal
                                 Console.WriteLine("[" + i + "]" + Mano1[i]);
                             }
                             Console.WriteLine("Elija el numero de carta que desee que ataque");
-                            string 
+
                         }
                     }
-                    
+
 
                 }
+            }
         }
     }
+}
 }
