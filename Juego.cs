@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,38 +6,12 @@ using System.Text;
 
 namespace ProyectoFinal
 {
-    interface iMetodos
+    interface IMetodos
     {
-        void Atacar();
-        void Draw(List<Cartas> a, List<Cartas> b);
+        void AtacarCarta();
+        void AtacarJugador();
     }
-
-    class Hunter
-    {
-        int costo;
-        string nombre;
-        int damage;
-        void hunter(int costo, string nombre, int damage)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            this.damage = 2;
-        }
-    }
-    class Warrior
-    {
-        int costo;
-        string nombre;
-        int armadura;
-        void warrior(int costo, string nombre, int armadura)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            armadura += 2;
-        }
-
-    }
-    public class Jugador
+    public class Jugador : IMetodos
     {
 
         public int vida;
@@ -88,8 +62,31 @@ namespace ProyectoFinal
             jugador.vida -= posiblesAtacantes[cartaElegida].ataque;
         }
     }
+    class Hunter : Jugador
+    {
+        int costo;
+        string nombre;
+        int damage;
+        public Hunter(int costo, string nombre, int damage) : base(vida, mana, mano, mazo, nombre, heroe, tablero)
+        {
+            this.costo = 2;
+            this.nombre = nombre;
+            this.damage = 2;
+        }
+    }
+    class Warrior : Jugador
+    {
+        int costo;
+        string nombre;
+        int armadura;
+        public Warrior(int costo, string nombre, int armadura) : base(vida, mana, mano, mazo, nombre, heroe, tablero)
+        {
+            this.costo = 2;
+            this.nombre = nombre;
+            armadura += 2;
+        }
 
-
+    }
     public class Cartas
     {
         Random rnd = new Random();
@@ -135,7 +132,6 @@ namespace ProyectoFinal
             }
         }
     }
-
     class Program
     {
         
