@@ -6,20 +6,11 @@ using System.Text;
 
 namespace ProyectoFinal
 {
-<<<<<<< HEAD
     interface IHeroe
     {
         void UsarPoder();
     }
     public class Jugador 
-=======
-    interface IMetodos
-    {
-        void AtacarCarta();
-        void AtacarJugador();
-    }
-    public class Jugador : IMetodos
->>>>>>> origin/proyectojavi
     {
 
         public int vida;
@@ -68,7 +59,6 @@ namespace ProyectoFinal
             jugador.vida -= posiblesAtacantes[cartaElegida].ataque;
         }
     }
-<<<<<<< HEAD
     class Hunter : Jugador, IHeroe
     {
         int costo;
@@ -98,32 +88,6 @@ namespace ProyectoFinal
             JugadorPoder.mana -= 2;
             JugadorPoder.armadura = 2;   
         }
-=======
-    class Hunter : Jugador
-    {
-        int costo;
-        string nombre;
-        int damage;
-        public Hunter(int costo, string nombre, int damage) : base(vida, mana, mano, mazo, nombre, heroe, tablero)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            this.damage = 2;
-        }
-    }
-    class Warrior : Jugador
-    {
-        int costo;
-        string nombre;
-        int armadura;
-        public Warrior(int costo, string nombre, int armadura) : base(vida, mana, mano, mazo, nombre, heroe, tablero)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            armadura += 2;
-        }
-
->>>>>>> origin/proyectojavi
     }
     public class Cartas
     {
