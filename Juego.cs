@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,38 +6,11 @@ using System.Text;
 
 namespace ProyectoFinal
 {
-    interface iMetodos
+    interface IHeroe
     {
-        void Atacar();
-        void Draw(List<Cartas> a, List<Cartas> b);
+        void UsarPoder();
     }
-
-    class Hunter
-    {
-        int costo;
-        string nombre;
-        int damage;
-        void hunter(int costo, string nombre, int damage)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            this.damage = 2;
-        }
-    }
-    class Warrior
-    {
-        int costo;
-        string nombre;
-        int armadura;
-        void warrior(int costo, string nombre, int armadura)
-        {
-            this.costo = 2;
-            this.nombre = nombre;
-            armadura += 2;
-        }
-
-    }
-    public class Jugador
+    public class Jugador 
     {
 
         public int vida;
@@ -45,16 +18,14 @@ namespace ProyectoFinal
         public List<Cartas> mano;
         public List<Cartas> mazo;
         public string nombre;
-        public string heroe;
         public List<Cartas> tablero;
-        public Jugador(int vida, int mana, List<Cartas> mano, List<Cartas> mazo, string nombre, string heroe, List<Cartas> tablero)
+        public Jugador(int vida, int mana, List<Cartas> mano, List<Cartas> mazo, string nombre, List<Cartas> tablero)
         {
             this.vida = vida;
             this.mana = mana;
             this.mano = mano;
             this.mazo = mazo;
             this.nombre = nombre;
-            this.heroe = heroe;
             this.tablero = tablero;
         }
         public void ManaGrowth()
@@ -88,8 +59,36 @@ namespace ProyectoFinal
             jugador.vida -= posiblesAtacantes[cartaElegida].ataque;
         }
     }
-
-
+    class Hunter : Jugador, IHeroe
+    {
+        int costo;
+        int damage;
+        public Hunter(int costo, int damage) : base(vida, mana, mano, mazo, nombre, tablero)
+        {
+            this.costo = 2;
+            this.damage = 2;
+        }
+        void UsarPoder(Hunter JugadorPoder, IHeroe JugadorOponente)
+        {
+            JugadorPoder.mana -= 2;
+            JugadorOponente.vida -= JugadorPoder.damage;
+        }
+    }
+    class Warrior : Jugador, IHeroe
+    {
+        int costo;
+        int armadura;
+        public Warrior(int costo, int armadura) : base(vida, mana, mano, mazo, nombre, tablero)
+        {
+            this.costo = 2;
+            this.armadura = 0;
+        }
+        void UsarPoder(Warrior JugadorPoder, IHeroe JugadorOponente)
+        {
+            JugadorPoder.mana -= 2;
+            JugadorPoder.armadura = 2;   
+        }
+    }
     public class Cartas
     {
         Random rnd = new Random();
@@ -135,7 +134,6 @@ namespace ProyectoFinal
             }
         }
     }
-
     class Program
     {
         
@@ -209,9 +207,22 @@ namespace ProyectoFinal
             List<Cartas> TableroJugador1 = new List<Cartas>();
             List<Cartas> TableroJugador2 = new List<Cartas>();
 
-            Jugador Jugador1 = new Jugador(30, 0, Mano1, Mazo1, name1, heroe1, TableroJugador1);
-            Jugador Jugador2 = new Jugador(30, 0, Mano2, Mazo2, name2, heroe2, TableroJugador2);
-
+            if (heroe1 == "Hunter" || "hunter")
+            {
+                Hunter Jugador1 = new Hunter(30, 0, Mano1, Mazo1, name1, TableroJugador1);
+            }
+            else if (heroe1 == "Warrior" || "warrior")
+            {
+                Warrior Jugador1 = new Warrior(30, 0, Mano1, Mazo1, name1, TableroJugador1);
+            }
+            if (heroe2 == "Hunter" || "hunter")
+            {
+                Hunter Jugador2 = new Hunter(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+            }
+            else if (heroe2 == "Warrior" || "warrior")
+            {
+                Warrior Jugador2 = new Warrior(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+            }
             Console.WriteLine("Comienza el juego");
             bool condicionJuego = true;
 
@@ -282,7 +293,7 @@ namespace ProyectoFinal
                         }
                         else if (decision1 == "3") //Poder del guerrero.
                         {
-                            //Aca me habia quedado la cagada, tuve que borrar todo, mañana lo termino
+                                Jugador1.UsarPoder(Jugador1, Jugador2);
                         }
                         else if (decision1 == "4")//Terminar Turno
                         {
@@ -354,7 +365,7 @@ namespace ProyectoFinal
                         }
                         else if (decision2 == "3") //Poder del guerrero.
                         {
-                            //Aca me habia quedado la cagada, tuve que borrar todo, mañana lo termino
+                            Jugador2.UsarPoder(Jugador2, Jugador1);
                         }
                         else if (decision2 == "4")//Terminar Turno
                         {
