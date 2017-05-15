@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,9 +41,9 @@ namespace ProyectoFinal
         }
         public void JugarCartas(List<Cartas> mano, List<Cartas> tablero, int cartaAJugar, int mana)
         {
-            if (mana >= tablero[cartaAJugar].costo)
+            if (mana >= mano[cartaAJugar].costo)
             {
-                mana -= tablero[cartaAJugar].costo;
+                mana -= mano[cartaAJugar].costo;
                 tablero.Add(mano[cartaAJugar]);
                 mano.Remove(mano[cartaAJugar]);
             }
@@ -145,47 +145,47 @@ namespace ProyectoFinal
         {
             bool ResumenCartas = true;
             List<Cartas> listaCartas = new List<Cartas>();
-                Cartas wisp = new Cartas(0, 1, 1, "wisp");
-                Cartas murlocRaider = new Cartas(1, 1, 2, "Murloc Raider");
-                Cartas bloodfenRaptor = new Cartas(2, 3, 2, "Bloodfen Raptor");
-                Cartas riverCrocolisk = new Cartas(2, 2, 3, "River CrocoLisk");
-                Cartas magmaRager = new Cartas(3, 5, 1, "Magma Rager");
-                Cartas chillwindYeti = new Cartas(4, 4, 5, "Chill Wind Yeti");
-                Cartas oasisSnapjaw = new Cartas(4, 2, 7, "Oasis Snap Jaw");
-                Cartas boulderfistOgre = new Cartas(6, 6, 7, "Boulder Fist Ogre");
-                Cartas warGolem = new Cartas(7, 7, 7, "War Golem");
-                Cartas coreHound = new Cartas(7, 9, 5, "Core Hound");
-                Cartas theCoin = new Cartas(0, 0, 0, "the coin");
-                listaCartas.Add(wisp);
-                listaCartas.Add(wisp);
-                listaCartas.Add(wisp);
-                listaCartas.Add(murlocRaider);
-                listaCartas.Add(murlocRaider);
-                listaCartas.Add(murlocRaider);
-                listaCartas.Add(bloodfenRaptor);
-                listaCartas.Add(bloodfenRaptor);
-                listaCartas.Add(bloodfenRaptor);
-                listaCartas.Add(riverCrocolisk);
-                listaCartas.Add(riverCrocolisk);
-                listaCartas.Add(riverCrocolisk);
-                listaCartas.Add(magmaRager);
-                listaCartas.Add(magmaRager);
-                listaCartas.Add(magmaRager);
-                listaCartas.Add(chillwindYeti);
-                listaCartas.Add(chillwindYeti);
-                listaCartas.Add(chillwindYeti);
-                listaCartas.Add(oasisSnapjaw);
-                listaCartas.Add(oasisSnapjaw);
-                listaCartas.Add(oasisSnapjaw);
-                listaCartas.Add(boulderfistOgre);
-                listaCartas.Add(boulderfistOgre);
-                listaCartas.Add(boulderfistOgre);
-                listaCartas.Add(warGolem);
-                listaCartas.Add(warGolem);
-                listaCartas.Add(warGolem);
-                listaCartas.Add(coreHound);
-                listaCartas.Add(coreHound);
-                listaCartas.Add(coreHound);
+            Cartas wisp = new Cartas(0, 1, 1, "wisp");
+            Cartas murlocRaider = new Cartas(1, 1, 2, "Murloc Raider");
+            Cartas bloodfenRaptor = new Cartas(2, 3, 2, "Bloodfen Raptor");
+            Cartas riverCrocolisk = new Cartas(2, 2, 3, "River CrocoLisk");
+            Cartas magmaRager = new Cartas(3, 5, 1, "Magma Rager");
+            Cartas chillwindYeti = new Cartas(4, 4, 5, "Chill Wind Yeti");
+            Cartas oasisSnapjaw = new Cartas(4, 2, 7, "Oasis Snap Jaw");
+            Cartas boulderfistOgre = new Cartas(6, 6, 7, "Boulder Fist Ogre");
+            Cartas warGolem = new Cartas(7, 7, 7, "War Golem");
+            Cartas coreHound = new Cartas(7, 9, 5, "Core Hound");
+            Cartas theCoin = new Cartas(0, 0, 0, "the coin");
+            listaCartas.Add(wisp);
+            listaCartas.Add(wisp);
+            listaCartas.Add(wisp);
+            listaCartas.Add(murlocRaider);
+            listaCartas.Add(murlocRaider);
+            listaCartas.Add(murlocRaider);
+            listaCartas.Add(bloodfenRaptor);
+            listaCartas.Add(bloodfenRaptor);
+            listaCartas.Add(bloodfenRaptor);
+            listaCartas.Add(riverCrocolisk);
+            listaCartas.Add(riverCrocolisk);
+            listaCartas.Add(riverCrocolisk);
+            listaCartas.Add(magmaRager);
+            listaCartas.Add(magmaRager);
+            listaCartas.Add(magmaRager);
+            listaCartas.Add(chillwindYeti);
+            listaCartas.Add(chillwindYeti);
+            listaCartas.Add(chillwindYeti);
+            listaCartas.Add(oasisSnapjaw);
+            listaCartas.Add(oasisSnapjaw);
+            listaCartas.Add(oasisSnapjaw);
+            listaCartas.Add(boulderfistOgre);
+            listaCartas.Add(boulderfistOgre);
+            listaCartas.Add(boulderfistOgre);
+            listaCartas.Add(warGolem);
+            listaCartas.Add(warGolem);
+            listaCartas.Add(warGolem);
+            listaCartas.Add(coreHound);
+            listaCartas.Add(coreHound);
+            listaCartas.Add(coreHound);
 
             //Nombres
             Console.WriteLine("Bienvenido a HearthStone, ingresen sus nombres: ");
@@ -221,24 +221,43 @@ namespace ProyectoFinal
             {
                 Hunter Jugador1 = new Hunter(2, 2, 30, 0, Mano1, Mazo1, name1, TableroJugador1);
                 Hunter Jugador2 = new Hunter(2, 2, 30, 0, Mano2, Mazo2, name2, TableroJugador2);
+                if (turno == 0)
+                {
+                    while (Jugador1.mano.Count < 3)
+                    {
+                        int r = rmd.Next(Jugador1.mazo.Count);
+                        Jugador1.mano.Add(Jugador1.mazo[r]);
+                        Jugador1.mazo.Remove(Jugador1.mazo[r]);
+                    }
+                    while (Jugador2.mano.Count < 4)
+                    {
+                        int r = rmd.Next(Jugador2.mazo.Count);
+                        Jugador2.mano.Add(Jugador2.mazo[r]);
+                        Jugador2.mazo.Remove(Jugador2.mazo[r]);
+                    }
+                    Jugador2.mano.Add(theCoin);
+                }
+                else if (turno == 1)
+                {
+                    while (Jugador2.mano.Count < 3)
+                    {
+                        int r = rmd.Next(Jugador2.mazo.Count);
+                        Jugador2.mano.Add(Jugador2.mazo[r]);
+                        Jugador2.mazo.Remove(Jugador2.mazo[r]);
+                    }
+                    while (Jugador1.mano.Count < 4)
+                    {
+                        int r = rmd.Next(Jugador1.mazo.Count);
+                        Jugador1.mano.Add(Jugador1.mazo[r]);
+                        Jugador1.mazo.Remove(Jugador1.mazo[r]);
+                    }
+                    Jugador1.mano.Add(theCoin);
+                }
 
                 while (condicionJuego)
                 {
                     if (turno == 0)
                     {
-                        while (Jugador1.mano.Count < 3)
-                        {
-                            int r = rmd.Next(Jugador1.mazo.Count);
-                            Jugador1.mano.Add(Jugador1.mazo[r]);
-                            Mazo1.Remove(Mazo1[r]);
-                        }
-                        while (Jugador2.mano.Count < 4)
-                        {
-                            int r = rmd.Next(Jugador2.mazo.Count);
-                            Jugador2.mano.Add(Jugador2.mazo[r]);
-                            Mazo2.Remove(Mazo2[r]);
-                        }
-                        Mano2.Add(theCoin);
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         Console.WriteLine("hola");
                         bool condicionTurno = true; //Para mantenerse en el menu.
@@ -264,13 +283,13 @@ namespace ProyectoFinal
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
                                 int numeroDeCartaInt1 = Int32.Parse(numeroDeCartaString1);//Numero a int
-                                Jugador1.JugarCartas(Jugador1.mano, Jugador1.tablero, numeroDeCartaInt1, Jugador1.tablero[numeroDeCartaInt1].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
+                                Jugador1.JugarCartas(Jugador1.mano, Jugador1.tablero, numeroDeCartaInt1, Jugador1.mano[numeroDeCartaInt1].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
                             }
                             else if (decision1 == "2") //Atacar con una creatura
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i]);
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre);
                                 }
                                 Console.WriteLine("Elija el numero de carta que desee que ataque");
                                 string cartaElegidaString1 = Console.ReadLine();
@@ -336,13 +355,13 @@ namespace ProyectoFinal
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
                                 int numeroDeCartaInt2 = Int32.Parse(numeroDeCartaString2);//Numero a int
-                                Jugador2.JugarCartas(Jugador2.mano, Jugador2.tablero, numeroDeCartaInt2, Jugador2.tablero[numeroDeCartaInt2].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
+                                Jugador2.JugarCartas(Jugador2.mano, Jugador2.tablero, numeroDeCartaInt2, Jugador2.mano[numeroDeCartaInt2].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
                             }
                             else if (decision2 == "2") //Atacar con una creatura
                             {
                                 for (int i = 0; i < posiblesAtacantes2.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes2[i]);
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes2[i].nombre);
                                 }
                                 Console.WriteLine("Elija el numero de carta que desee que ataque");
                                 string cartaElegidaString2 = Console.ReadLine();
@@ -393,7 +412,7 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
-                        while(Jugador1.mano.Count < 3)
+                        while (Jugador1.mano.Count < 3)
                         {
                             int r = rmd.Next(Jugador1.mazo.Count);
                             Jugador1.mano.Add(Jugador1.mazo[r]);
@@ -661,7 +680,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador2.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre ); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
