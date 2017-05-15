@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ namespace ProyectoFinal
     {
         void UsarPoder();
     }
-    public class Jugador 
+    public class Jugador
     {
 
         public int vida;
@@ -52,7 +52,7 @@ namespace ProyectoFinal
 
         public void AtacarCarta(List<Cartas> posiblesAtacantes, int cartaElegida, List<Cartas> tablero, int cartaTarget) // si se ataca a carta hacerlo directamente
         {
-            tablero[cartaTarget].vida -= posiblesAtacantes[cartaElegida].ataque; 
+            tablero[cartaTarget].vida -= posiblesAtacantes[cartaElegida].ataque;
         }
         public void AtacarJugador(List<Cartas> posiblesAtacantes, int cartaElegida, Jugador jugador)
         {
@@ -68,7 +68,7 @@ namespace ProyectoFinal
             this.costo = 2;
             this.damage = 2;
         }
-        void UsarPoder(Hunter JugadorPoder, IHeroe JugadorOponente)
+        public void UsarPoder() 
         {
             JugadorPoder.mana -= 2;
             JugadorOponente.vida -= JugadorPoder.damage;
@@ -83,10 +83,10 @@ namespace ProyectoFinal
             this.costo = 2;
             this.armadura = 0;
         }
-        void UsarPoder(Warrior JugadorPoder, IHeroe JugadorOponente)
+        public void UsarPoder()
         {
             JugadorPoder.mana -= 2;
-            JugadorPoder.armadura = 2;   
+            JugadorPoder.armadura = 2;
         }
     }
     public class Cartas
@@ -106,7 +106,7 @@ namespace ProyectoFinal
             this.vida = vida;
             this.nombre = nombre;
         }
-        public void Draw(List<Cartas> Mano, List<Cartas> Mazo, List <Cartas> Monton)
+        public void Draw(List<Cartas> Mano, List<Cartas> Mazo, List<Cartas> Monton)
         {
             int r = rnd.Next(Monton.Count);
             if (Mano.Count < 10)
@@ -115,12 +115,12 @@ namespace ProyectoFinal
             }
             // sacar una carta al azar del mazo y ponerla en la mano al principio de cada turno.
         }
-        public void crearMazo(List <Cartas> Monton, List <Cartas> Mazo)
+        public void crearMazo(List<Cartas> Monton, List<Cartas> Mazo)
         {
             int r = 0;
             while (mazo.Count <= 30)
             {
-                r =+ 1;
+                r = +1;
                 Mazo.Add(Monton[r]);
             }
         }
@@ -136,7 +136,7 @@ namespace ProyectoFinal
     }
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             bool ResumenCartas = true;
@@ -147,12 +147,13 @@ namespace ProyectoFinal
                 Cartas murlocRaider = new Cartas(1, 1, 2, "Murloc Raider");
                 Cartas bloodfenRaptor = new Cartas(2, 3, 2, "Bloodfen Raptor");
                 Cartas riverCrocolisk = new Cartas(2, 2, 3, "River CrocoLisk");
-                Cartas magmaRager = new Cartas(3, 5, 1,"Magma Rager");
+                Cartas magmaRager = new Cartas(3, 5, 1, "Magma Rager");
                 Cartas chillwindYeti = new Cartas(4, 4, 5, "Chill Wind Yeti");
                 Cartas oasisSnapjaw = new Cartas(4, 2, 7, "Oasis Snap Jaw");
                 Cartas boulderfistOgre = new Cartas(6, 6, 7, "Boulder Fist Ogre");
                 Cartas warGolem = new Cartas(7, 7, 7, "War Golem");
                 Cartas coreHound = new Cartas(7, 9, 5, "Core Hound");
+                Cartas theCoin = new Cartas(0, 0, 0, "the coin");
                 listaCartas.Add(wisp);
                 listaCartas.Add(wisp);
                 listaCartas.Add(wisp);
@@ -194,7 +195,6 @@ namespace ProyectoFinal
 
             Console.WriteLine(name1 + ", ¿Seras Hunter o Warrior?");
             string heroe1 = Console.ReadLine();
-
             Console.WriteLine(name2 + ", ¿Seras Hunter o Warrior?");
             string heroe2 = Console.ReadLine();
 
@@ -207,27 +207,50 @@ namespace ProyectoFinal
             List<Cartas> TableroJugador1 = new List<Cartas>();
             List<Cartas> TableroJugador2 = new List<Cartas>();
 
-            if (heroe1 == "Hunter" || "hunter")
+            if (heroe1 == "Hunter")
             {
                 Hunter Jugador1 = new Hunter(30, 0, Mano1, Mazo1, name1, TableroJugador1);
             }
-            else if (heroe1 == "Warrior" || "warrior")
+            else if (heroe1 == "hunter")
+            {
+                Hunter Jugador1 = new Hunter(30, 0, Mano1, Mazo1, name1, TableroJugador1);
+            }
+            else if (heroe1 == "Warrior")
             {
                 Warrior Jugador1 = new Warrior(30, 0, Mano1, Mazo1, name1, TableroJugador1);
             }
-            if (heroe2 == "Hunter" || "hunter")
+            else if (heroe1 == "warrior")
+            {
+                Warrior Jugador1 = new Warrior(30, 0, Mano1, Mazo1, name1, TableroJugador1);
+            }
+            else if (heroe2 == "Hunter")
             {
                 Hunter Jugador2 = new Hunter(30, 0, Mano2, Mazo2, name2, TableroJugador2);
             }
-            else if (heroe2 == "Warrior" || "warrior")
+            else if (heroe2 == "hunter")
+            {
+                Hunter Jugador2 = new Hunter(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+            }
+            else if (heroe2 == "Warrior")
             {
                 Warrior Jugador2 = new Warrior(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+
+            }
+            else if (heroe2 == "Warrior")
+            {
+                Warrior Jugador2 = new Warrior(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+            }
+            else if (heroe2 == "warrior")
+            {
+                Warrior Jugador2 = new Warrior(30, 0, Mano2, Mazo2, name2, TableroJugador2);
+
             }
             Console.WriteLine("Comienza el juego");
             bool condicionJuego = true;
 
             Random rmd = new Random();
             int turno = rmd.Next(0, 2);
+
 
             while (condicionJuego)
             {
@@ -240,7 +263,7 @@ namespace ProyectoFinal
                     Console.WriteLine("Turno de " + Jugador1.nombre);
                     while (condicionTurno)
                     {
-                        Console.WriteLine(Jugador1.nombre + " tienes " +Jugador1.mana + " puntos de mana.");
+                        Console.WriteLine(Jugador1.nombre + " tienes " + Jugador1.mana + " puntos de mana.");
                         Console.WriteLine("¿Que desea hacer?");
                         Console.WriteLine("(1) Jugar una carta de la mano");
                         Console.WriteLine("(2) Atacar");
@@ -293,7 +316,7 @@ namespace ProyectoFinal
                         }
                         else if (decision1 == "3") //Poder del guerrero.
                         {
-                                Jugador1.UsarPoder(Jugador1, Jugador2);
+                            Jugador1.UsarPoder(Jugador1, Jugador2);
                         }
                         else if (decision1 == "4")//Terminar Turno
                         {
@@ -360,7 +383,7 @@ namespace ProyectoFinal
                                 string numeroDeTarget2 = Console.ReadLine();
                                 int numeroDeTargetInt2 = Int32.Parse(numeroDeTarget2);
                                 Jugador1.AtacarCarta(posiblesAtacantes2, cartaElegidaInt2, Jugador1.tablero, numeroDeTargetInt2);
-                                
+
                             }
                         }
                         else if (decision2 == "3") //Poder del guerrero.
