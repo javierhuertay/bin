@@ -232,13 +232,13 @@ namespace ProyectoFinal
                             Jugador1.mano.Add(Jugador1.mazo[r]);
                             Mazo1.Remove(Mazo1[r]);
                         }
-                        while (Mano2.Count < 4)
+                        while (Jugador2.mano.Count < 4)
                         {
                             int r = rmd.Next(Jugador2.mazo.Count);
                             Jugador2.mano.Add(Jugador2.mazo[r]);
-                            Mazo1.Remove(Mazo2[r]);
-
+                            Mazo2.Remove(Mazo2[r]);
                         }
+                        Mano2.Add(theCoin);
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         Console.WriteLine("hola");
                         bool condicionTurno = true; //Para mantenerse en el menu.
@@ -259,7 +259,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Mano1[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Mano1[i].nombre + "[" + Mano1[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -331,7 +331,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador2.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -393,6 +393,19 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
+                        while(Jugador1.mano.Count < 3)
+                        {
+                            int r = rmd.Next(Jugador1.mazo.Count);
+                            Jugador1.mano.Add(Jugador1.mazo[r]);
+                            Mazo1.Remove(Mazo1[r]);
+                        }
+                        while (Jugador2.mano.Count < 4)
+                        {
+                            int r = rmd.Next(Jugador2.mazo.Count);
+                            Jugador2.mano.Add(Jugador2.mazo[r]);
+                            Mazo2.Remove(Mazo2[r]);
+                        }
+                        Mano2.Add(theCoin);
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.mano; //Asi la misma carta no puede atacar dos veces.
@@ -412,7 +425,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -483,7 +496,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador2.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "[" + Jugador2.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -545,6 +558,19 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
+                        while (Jugador1.mano.Count < 3)
+                        {
+                            int r = rmd.Next(Jugador1.mazo.Count);
+                            Jugador1.mano.Add(Jugador1.mazo[r]);
+                            Mazo1.Remove(Mazo1[r]);
+                        }
+                        while (Jugador2.mano.Count < 4)
+                        {
+                            int r = rmd.Next(Jugador2.mazo.Count);
+                            Jugador2.mano.Add(Jugador2.mazo[r]);
+                            Mazo2.Remove(Mazo2[r]);
+                        }
+                        Mano2.Add(theCoin);
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.mano; //Asi la misma carta no puede atacar dos veces.
@@ -564,7 +590,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -635,7 +661,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador2.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre ); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -697,6 +723,19 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
+                        while (Jugador1.mano.Count < 3)
+                        {
+                            int r = rmd.Next(Jugador1.mazo.Count);
+                            Jugador1.mano.Add(Jugador1.mazo[r]);
+                            Mazo1.Remove(Mazo1[r]);
+                        }
+                        while (Jugador2.mano.Count < 4)
+                        {
+                            int r = rmd.Next(Jugador2.mazo.Count);
+                            Jugador2.mano.Add(Jugador2.mazo[r]);
+                            Mazo2.Remove(Mazo2[r]);
+                        }
+                        Mano2.Add(theCoin);
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.mano; //Asi la misma carta no puede atacar dos veces.
@@ -716,7 +755,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -787,7 +826,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador2.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "[" + Jugador2.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
