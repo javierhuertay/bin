@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +19,9 @@ namespace ProyectoFinal
         public List<Cartas> mazo;
         public string nombre;
         public List<Cartas> tablero;
+        internal int damage;
+        internal int armadura;
+
         public Jugador(int vida, int mana, List<Cartas> mano, List<Cartas> mazo, string nombre, List<Cartas> tablero)
         {
             this.vida = vida;
@@ -87,7 +90,7 @@ namespace ProyectoFinal
         public void UsarPoder(Jugador JugadorPoder, Jugador JugadorOponente)
         {
             JugadorPoder.mana -= 2;
-            JugadorPoder.armadura = 2;
+            JugadorPoder.armadura += 2;
         }
     }
     public class Cartas
@@ -127,7 +130,7 @@ namespace ProyectoFinal
         }
         public void crearMano(List<Cartas> Mano, List<Cartas> Mazo)
         {
-            while (Mano.Count <= 3)
+            if (Mano.Count < 10)
             {
                 int r = rnd.Next(Mazo.Count);
                 Mano.Add(Mazo[r]);
@@ -142,8 +145,6 @@ namespace ProyectoFinal
         {
             bool ResumenCartas = true;
             List<Cartas> listaCartas = new List<Cartas>();
-            if (ResumenCartas)
-            {
                 Cartas wisp = new Cartas(0, 1, 1, "wisp");
                 Cartas murlocRaider = new Cartas(1, 1, 2, "Murloc Raider");
                 Cartas bloodfenRaptor = new Cartas(2, 3, 2, "Bloodfen Raptor");
@@ -185,7 +186,6 @@ namespace ProyectoFinal
                 listaCartas.Add(coreHound);
                 listaCartas.Add(coreHound);
                 listaCartas.Add(coreHound);
-            }
 
             //Nombres
             Console.WriteLine("Bienvenido a HearthStone, ingresen sus nombres: ");
@@ -226,7 +226,21 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
+                        while (Jugador1.mano.Count < 3)
+                        {
+                            int r = rmd.Next(Jugador1.mazo.Count);
+                            Jugador1.mano.Add(Jugador1.mazo[r]);
+                            Mazo1.Remove(Mazo1[r]);
+                        }
+                        while (Mano2.Count < 4)
+                        {
+                            int r = rmd.Next(Jugador2.mazo.Count);
+                            Jugador2.mano.Add(Jugador2.mazo[r]);
+                            Mazo1.Remove(Mazo2[r]);
+
+                        }
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
+                        Console.WriteLine("hola");
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.mano; //Asi la misma carta no puede atacar dos veces.
                         int manaTurno = Jugador1.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
@@ -245,7 +259,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i]); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Mano1[i]); //Mostramos lo que tenemos en la mano
                                 }
                                 Console.WriteLine("Elija el numero de carta que desea jugar");
                                 string numeroDeCartaString1 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
@@ -308,7 +322,8 @@ namespace ProyectoFinal
                             Console.WriteLine("¿Que desea hacer?");
                             Console.WriteLine("(1) Jugar una carta de la mano");
                             Console.WriteLine("(2) Atacar");
-                            Console.WriteLine("(3) Usar el poder");
+                            Console.WriteLine("(3) Usar el p" +
+                                "oder");
                             Console.WriteLine("(4) Terminar el turno");
                             string decision2 = Console.ReadLine(); //Que es lo que hara el jugador.
 
@@ -523,7 +538,7 @@ namespace ProyectoFinal
             }
             else if ((heroe1 == "Warrior" || heroe1 == "warrior") && (heroe2 == "Hunter" || heroe2 == "hunter"))
             {
-                Warrior Jugador1 = new Warrior (2, 0, 30, 0, Mano1, Mazo1, name1, TableroJugador1);
+                Warrior Jugador1 = new Warrior(2, 0, 30, 0, Mano1, Mazo1, name1, TableroJugador1);
                 Hunter Jugador2 = new Hunter(2, 2, 30, 0, Mano2, Mazo2, name2, TableroJugador2);
 
                 while (condicionJuego)
@@ -675,7 +690,7 @@ namespace ProyectoFinal
             }
             else if ((heroe1 == "Warrior" || heroe1 == "warrior") && (heroe2 == "Warrior" || heroe2 == "warrior"))
             {
-                Warrior Jugador1 = new Warrior (2, 0, 30, 0, Mano1, Mazo1, name1, TableroJugador1);
+                Warrior Jugador1 = new Warrior(2, 0, 30, 0, Mano1, Mazo1, name1, TableroJugador1);
                 Warrior Jugador2 = new Warrior(2, 0, 30, 0, Mano2, Mazo2, name2, TableroJugador2);
 
                 while (condicionJuego)
