@@ -46,7 +46,7 @@ namespace ProyectoFinal
                 mana -= mano[cartaAJugar].costo;
                 tablero.Add(mano[cartaAJugar]);
                 mano.Remove(mano[cartaAJugar]);
-                
+
             }
             else
             {
@@ -158,13 +158,13 @@ namespace ProyectoFinal
             }
             else if (turno == 1)
             {
-                while (Jugador2.mano.Count < 10)
+                while (Jugador2.mano.Count < 3)
                 {
                     int r = rmd.Next(Jugador2.mazo.Count);
                     Jugador2.mano.Add(Jugador2.mazo[r]);
                     Jugador2.mazo.Remove(Jugador2.mazo[r]);
                 }
-                while (Jugador1.mano.Count < 10)
+                while (Jugador1.mano.Count < 4)
                 {
                     int r = rmd.Next(Jugador1.mazo.Count);
                     Jugador1.mano.Add(Jugador1.mazo[r]);
@@ -273,8 +273,24 @@ namespace ProyectoFinal
                         {
                             Console.WriteLine(Jugador1.nombre + " tienes " + manaTurno + " puntos de mana.");
                             Console.WriteLine("¿Que desea hacer?");
-                            Console.WriteLine("(1) Jugar una carta de la mano");
-                            Console.WriteLine("(2) Atacar");
+                            int paso;
+                            paso = 0;
+                            for (int i = 0; i < Jugador1.mano.Count; i++)
+                            {
+                                if (paso == 0)
+                                {
+                                    if (Mano1[i].costo <= manaTurno)
+                                    {
+                                        paso += 1;
+                                        Console.WriteLine("(1) Jugar una carta de la mano");
+                                    }
+                                }
+
+                            }
+                            if (TableroJugador1.Count >= 1)
+                            {
+                                Console.WriteLine("(2) Atacar");
+                            }
                             if (manaTurno >= 2)
                             {
                                 Console.WriteLine("(3) Usar el poder");
@@ -286,7 +302,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < Jugador1.mano.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Mano1[i].nombre + "[" + Mano1[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "||" + "costo" + "[" + Jugador1.mano[i].costo + "]" + "vida" + "[" + Jugador1.mano[i].vida + "]" + "vida" + "[" + Jugador1.mano[i].ataque + "]"); //Mostramos lo que tenemos en la mano
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -297,6 +313,10 @@ namespace ProyectoFinal
                                     if (numeroDeCartaInt1 == 11)
                                     {
                                         decision1 = "1";
+                                    }
+                                    else if (Mano1[numeroDeCartaInt1].nombre == "theCoin")
+                                    {
+                                        manaTurno += 1;
                                     }
                                     else
                                     {
@@ -315,10 +335,10 @@ namespace ProyectoFinal
                                                 decision1 = "1";
                                             }
                                         }
-                                            else
-                                            {
-                                                Console.WriteLine("Ya hay 7 cartas en la mesa");
-                                            }   
+                                        else
+                                        {
+                                            Console.WriteLine("Ya hay 7 cartas en la mesa");
+                                        }
                                     }
                                 }
                             }
@@ -326,7 +346,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre);
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "||" + "vida" + "[" + Jugador1.mano[i].vida + "]" + "vida" + "[" + Jugador1.mano[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -349,17 +369,34 @@ namespace ProyectoFinal
                                         if (target == 1)
                                         {
                                             Jugador1.AtacarJugador(posiblesAtacantes1, cartaElegidaInt1, Jugador2);
+                                            if (Jugador2.vida <= 0)
+                                            {
+                                                Console.WriteLine("Juego terminado" + "Gano el jugador1");
+                                                condicionJuego = false;
+                                            }
                                         }
                                         else if (target == 2)
                                         {
                                             Console.WriteLine("indique a cual carta del oponente desea atacar");
                                             for (int i = 0; i < Jugador2.tablero.Count; i++)
                                             {
-                                                Console.WriteLine("[" + i + "]" + Jugador2.tablero[i].nombre);
+                                                Console.WriteLine("[" + i + "]" + Jugador2.tablero[i].nombre + "vida" + "[" + Jugador2.tablero[i].vida + "]" + "vida" + "[" + Jugador2.tablero[i].ataque + "]");
                                             }
+
+
                                             string numeroDeTarget1 = Console.ReadLine();
                                             int numeroDeTargetInt1 = Int32.Parse(numeroDeTarget1);
                                             Jugador1.AtacarCarta(posiblesAtacantes1, cartaElegidaInt1, Jugador2.tablero, numeroDeTargetInt1);
+                                            if (Jugador2.tablero[numeroDeTargetInt1].vida <= 0)
+                                            {
+                                                Jugador2.tablero.Remove(Jugador2.tablero[numeroDeTargetInt1]);
+                                                Console.WriteLine(Jugador2.tablero[numeroDeTargetInt1].nombre + "ha muerto");
+                                            }
+                                            if (Jugador1.tablero[cartaElegidaInt1].vida <= 0)
+                                            {
+                                                Jugador1.tablero.Remove(Jugador1.tablero[cartaElegidaInt1]);
+                                                Console.WriteLine(Jugador1.tablero[numeroDeTargetInt1].nombre + "ha muerto");
+                                            }
                                         }
                                         decision1 = "2";
                                     }
@@ -377,12 +414,24 @@ namespace ProyectoFinal
                                 else
                                 {
                                     Jugador1.UsarPoder(Jugador1, Jugador2);
+                                    if (Jugador2.vida <= 0)
+                                    {
+                                        Console.WriteLine("Juego terminado" + "Gano el jugador1");
+                                        condicionJuego = false;
+
+                                    }
                                 }
                             }
                             else if (decision1 == "4")//Terminar Turno
                             {
                                 condicionTurno = false;
                                 turno = 1;
+                                if (Jugador1.mano.Count < 10)
+                                {
+                                    int r = 0;
+                                    Jugador1.mano.Add(Jugador1.mazo[r]);
+                                    Jugador1.mazo.Remove(Jugador1.mazo[r]);
+                                }
                             }
                         }
                     }
@@ -536,6 +585,33 @@ namespace ProyectoFinal
                             Mazo2.Remove(Mazo2[r]);
                         }
                         Mano2.Add(theCoin);
+                        string a;
+                        bool b;
+                        string c;
+                        b = true;
+                        for (int i = 0; i < Jugador1.mano.Count; i++)
+                        {
+                            Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                        }
+                        Console.WriteLine("Quiere cambiar cartas, si o no");
+                        a = Console.ReadLine();
+                        while (a == "si")
+                        {
+                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
+                            a = Console.ReadLine();
+                            c = Console.ReadLine();
+                            int c1 = Int32.Parse(c);
+                            if (b)
+                            {
+                                Jugador1.mazo.Add(Jugador1.mano[c1]);
+                                Jugador1.mano.Remove(Jugador1.mano[c1]);
+                                int r = rmd.Next(Jugador1.mazo.Count);
+                                Jugador1.mano.Add(Jugador1.mazo[r]);
+                                Mazo1.Remove(Mazo1[r]);
+                            }
+
+                        }
+
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.mano; //Asi la misma carta no puede atacar dos veces.
@@ -612,68 +688,93 @@ namespace ProyectoFinal
                         List<Cartas> posiblesAtacantes2 = Jugador2.mano; //Asi la misma carta no puede atacar dos veces.
                         int manaTurno = Jugador2.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
                         Console.WriteLine("Turno de " + Jugador2.nombre);
-                        while (condicionTurno)
+                        for (int i = 0; i < Jugador1.mano.Count; i++)
                         {
-                            Console.WriteLine(Jugador2.nombre + " tienes " + Jugador2.mana + " puntos de mana.");
-                            Console.WriteLine("¿Que desea hacer?");
-                            Console.WriteLine("(1) Jugar una carta de la mano");
-                            Console.WriteLine("(2) Atacar");
-                            Console.WriteLine("(3) Usar el poder");
-                            Console.WriteLine("(4) Terminar el turno");
-                            string decision2 = Console.ReadLine(); //Que es lo que hara el jugador.
-
-                            if (decision2 == "1") //Jugar una carta
+                            Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                        }
+                        string a;
+                        string c;
+                        bool b;
+                        b = true;
+                        Console.WriteLine("Jugador2" + "Quiere cambiar cartas, si o no");
+                        a = Console.ReadLine();
+                        while (a == "si")
+                        {
+                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
+                            a = Console.ReadLine();
+                            c = Console.ReadLine();
+                            int c1 = Int32.Parse(c);
+                            if (b)
                             {
-                                for (int i = 0; i < Jugador2.mano.Count; i++)
-                                {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "[" + Jugador2.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
-                                }
-                                Console.WriteLine("Elija el numero de carta que desea jugar");
-                                string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
-                                int numeroDeCartaInt2 = Int32.Parse(numeroDeCartaString2);//Numero a int
-                                Jugador2.JugarCartas(Jugador2.mano, Jugador2.tablero, numeroDeCartaInt2, Jugador2.tablero[numeroDeCartaInt2].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
+                                Jugador1.mazo.Add(Jugador1.mano[c1]);
+                                Jugador1.mano.Remove(Jugador1.mano[c1]);
+                                int r = rmd.Next(Jugador1.mazo.Count);
+                                Jugador1.mano.Add(Jugador1.mazo[r]);
+                                Mazo1.Remove(Mazo1[r]);
                             }
-                            else if (decision2 == "2") //Atacar con una creatura
+                            while (condicionTurno)
                             {
-                                for (int i = 0; i < posiblesAtacantes2.Count; i++)
-                                {
-                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes2[i]);
-                                }
-                                Console.WriteLine("Elija el numero de carta que desee que ataque");
-                                string cartaElegidaString2 = Console.ReadLine();
-                                int cartaElegidaInt2 = Int32.Parse(cartaElegidaString2); // Hasta aca se tiene la carta que va a atacar, falta decidir a quien se va a atacar
+                                Console.WriteLine(Jugador2.nombre + " tienes " + Jugador2.mana + " puntos de mana.");
+                                Console.WriteLine("¿Que desea hacer?");
+                                Console.WriteLine("(1) Jugar una carta de la mano");
+                                Console.WriteLine("(2) Atacar");
+                                Console.WriteLine("(3) Usar el poder");
+                                Console.WriteLine("(4) Terminar el turno");
+                                string decision2 = Console.ReadLine(); //Que es lo que hara el jugador.
 
-                                Console.WriteLine("A quien desea a atacar"); // primero vemos a quien se ataca, si se ataca a carta o a Jugador
-                                Console.WriteLine("(1) Jugador oponente");
-                                Console.WriteLine("(2) Alguna carta del oponente");
-                                string target2 = Console.ReadLine();
-                                int target = Int32.Parse(target2);
-
-                                if (target == 1)
+                                if (decision2 == "1") //Jugar una carta
                                 {
-                                    Jugador1.AtacarJugador(posiblesAtacantes2, cartaElegidaInt2, Jugador1);
-                                }
-                                else if (target == 2)
-                                {
-                                    Console.WriteLine("indique a cual carta del oponente desea atacar");
-                                    for (int i = 0; i < Jugador1.tablero.Count; i++)
+                                    for (int i = 0; i < Jugador2.mano.Count; i++)
                                     {
-                                        Console.WriteLine("[" + i + "]" + Jugador1.tablero[i]);
+                                        Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "[" + Jugador2.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                                     }
-                                    string numeroDeTarget2 = Console.ReadLine();
-                                    int numeroDeTargetInt2 = Int32.Parse(numeroDeTarget2);
-                                    Jugador1.AtacarCarta(posiblesAtacantes2, cartaElegidaInt2, Jugador1.tablero, numeroDeTargetInt2);
-
+                                    Console.WriteLine("Elija el numero de carta que desea jugar");
+                                    string numeroDeCartaString2 = Console.ReadLine();//Numero de carta que quiere jugar, parte desde el 0
+                                    int numeroDeCartaInt2 = Int32.Parse(numeroDeCartaString2);//Numero a int
+                                    Jugador2.JugarCartas(Jugador2.mano, Jugador2.tablero, numeroDeCartaInt2, Jugador2.tablero[numeroDeCartaInt2].costo);//Se juega la carta, se agrega al tablero y se borra de la mano
                                 }
-                            }
-                            else if (decision2 == "3") //Poder del guerrero.
-                            {
-                                Jugador2.UsarPoder(Jugador2, Jugador1);
-                            }
-                            else if (decision2 == "4")//Terminar Turno
-                            {
-                                condicionTurno = false;
-                                turno = 0;
+                                else if (decision2 == "2") //Atacar con una creatura
+                                {
+                                    for (int i = 0; i < posiblesAtacantes2.Count; i++)
+                                    {
+                                        Console.WriteLine("[" + i + "]" + posiblesAtacantes2[i]);
+                                    }
+                                    Console.WriteLine("Elija el numero de carta que desee que ataque");
+                                    string cartaElegidaString2 = Console.ReadLine();
+                                    int cartaElegidaInt2 = Int32.Parse(cartaElegidaString2); // Hasta aca se tiene la carta que va a atacar, falta decidir a quien se va a atacar
+
+                                    Console.WriteLine("A quien desea a atacar"); // primero vemos a quien se ataca, si se ataca a carta o a Jugador
+                                    Console.WriteLine("(1) Jugador oponente");
+                                    Console.WriteLine("(2) Alguna carta del oponente");
+                                    string target2 = Console.ReadLine();
+                                    int target = Int32.Parse(target2);
+
+                                    if (target == 1)
+                                    {
+                                        Jugador1.AtacarJugador(posiblesAtacantes2, cartaElegidaInt2, Jugador1);
+                                    }
+                                    else if (target == 2)
+                                    {
+                                        Console.WriteLine("indique a cual carta del oponente desea atacar");
+                                        for (int i = 0; i < Jugador1.tablero.Count; i++)
+                                        {
+                                            Console.WriteLine("[" + i + "]" + Jugador1.tablero[i]);
+                                        }
+                                        string numeroDeTarget2 = Console.ReadLine();
+                                        int numeroDeTargetInt2 = Int32.Parse(numeroDeTarget2);
+                                        Jugador1.AtacarCarta(posiblesAtacantes2, cartaElegidaInt2, Jugador1.tablero, numeroDeTargetInt2);
+
+                                    }
+                                }
+                                else if (decision2 == "3") //Poder del guerrero.
+                                {
+                                    Jugador2.UsarPoder(Jugador2, Jugador1);
+                                }
+                                else if (decision2 == "4")//Terminar Turno
+                                {
+                                    condicionTurno = false;
+                                    turno = 0;
+                                }
                             }
                         }
                     }
