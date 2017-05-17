@@ -1,4 +1,4 @@
-using System;
+=using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -264,6 +264,60 @@ namespace ProyectoFinal
                 {
                     if (turno == 0)
                     {
+                        while (Jugador1.mano.Count < 3)
+                        {
+                            int r = rmd.Next(Jugador1.mazo.Count);
+                            Jugador1.mano.Add(Jugador1.mazo[r]);
+                            Mazo1.Remove(Mazo1[r]);
+                        }
+                        while (Jugador2.mano.Count < 4)
+                        {
+                            int r = rmd.Next(Jugador2.mazo.Count);
+                            Jugador2.mano.Add(Jugador2.mazo[r]);
+                            Mazo2.Remove(Mazo2[r]);
+                        }
+                        Mano2.Add(theCoin);
+                        bool cambiarCartas;
+                        cambiarCartas = true;
+                        while (cambiarCartas)
+                        {
+                            string a;
+                            bool b;
+                            string c;
+                            b = true;
+                            for (int i = 0; i < Jugador1.mano.Count; i++)
+                            {
+                                Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                            }
+                            Console.WriteLine("Jugador 1,  Quiere cambiar cartas, si o no?");
+                            a = Console.ReadLine();
+                            while (a == "si")
+                            {
+
+                                for (int i = 0; i < Jugador1.mano.Count; i++)
+                                {
+                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                                }
+                                Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
+                                c = Console.ReadLine();
+                                if (c == "11")
+                                {
+                                    a = "no";
+                                }
+                                else { 
+                                int c1 = Int32.Parse(c);
+                                if (b)
+                                {
+                                    Jugador1.mazo.Add(Jugador1.mano[c1]);
+                                    Jugador1.mano.Remove(Jugador1.mano[c1]);
+                                    int r = rmd.Next(Jugador1.mazo.Count);
+                                    Jugador1.mano.Add(Jugador1.mazo[r]);
+                                    Mazo1.Remove(Mazo1[r]);
+                                }
+                                }
+
+                            }
+                        }
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                         bool condicionTurno = true; //Para mantenerse en el menu.
                         List<Cartas> posiblesAtacantes1 = Jugador1.tablero; //Asi la misma carta no puede atacar dos veces.
@@ -585,6 +639,10 @@ namespace ProyectoFinal
                             Mazo2.Remove(Mazo2[r]);
                         }
                         Mano2.Add(theCoin);
+                        bool cambiarCartas;
+                        cambiarCartas = true;
+                        while (cambiarCartas)
+                        { 
                         string a;
                         bool b;
                         string c;
@@ -593,12 +651,16 @@ namespace ProyectoFinal
                         {
                             Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
                         }
-                        Console.WriteLine("Quiere cambiar cartas, si o no");
-                        a = Console.ReadLine();
+                        a = "si";
                         while (a == "si")
                         {
-                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
+                            Console.WriteLine("Jugador 1,  Quiere cambiar cartas, si o no?");
                             a = Console.ReadLine();
+                            for (int i = 0; i < Jugador1.mano.Count; i++)
+                            {
+                                Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                            }
+                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
                             c = Console.ReadLine();
                             int c1 = Int32.Parse(c);
                             if (b)
@@ -610,6 +672,7 @@ namespace ProyectoFinal
                                 Mazo1.Remove(Mazo1[r]);
                             }
 
+                        }
                         }
 
                         Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
@@ -688,21 +751,25 @@ namespace ProyectoFinal
                         List<Cartas> posiblesAtacantes2 = Jugador2.mano; //Asi la misma carta no puede atacar dos veces.
                         int manaTurno = Jugador2.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
                         Console.WriteLine("Turno de " + Jugador2.nombre);
-                        for (int i = 0; i < Jugador1.mano.Count; i++)
-                        {
-                            Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "[" + Jugador1.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
-                        }
                         string a;
                         string c;
                         bool b;
                         b = true;
-                        Console.WriteLine("Jugador2" + "Quiere cambiar cartas, si o no");
-                        a = Console.ReadLine();
+                        a = "si";
                         while (a == "si")
                         {
-                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
+                            Console.WriteLine("Jugador2" + "      "   + "Quiere cambiar cartas, si o no");
                             a = Console.ReadLine();
+                            for (int i = 0; i < Jugador2.mano.Count; i++)
+                            {
+                                Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "[" + Jugador2.mano[i].costo + "]"); //Mostramos lo que tenemos en la mano
+                            }
+                            Console.WriteLine("Elija la carta que quiere cambiar, 11 si no quiere cambiar");
                             c = Console.ReadLine();
+                            if (c == "11")
+                            {
+                                a = "no";
+                            }
                             int c1 = Int32.Parse(c);
                             if (b)
                             {
