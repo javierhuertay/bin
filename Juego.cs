@@ -371,7 +371,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "||" + " vida: " + "[" + Jugador1.mano[i].vida + "]" + " ataque: " + "[" + Jugador1.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -572,7 +572,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "||" + " vida: " + "[" + Jugador2.mano[i].vida + "]" + " ataque: " + "[" + Jugador2.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -816,7 +816,7 @@ namespace ProyectoFinal
                                             Console.WriteLine("Indique a cual carta del oponente desea atacar");
                                             for (int i = 0; i < Jugador2.tablero.Count; i++)
                                             {
-                                                Console.WriteLine("[" + i + "]" + Jugador2.tablero[i].nombre + "|| vida: " + "[" + Jugador2.tablero[i].vida + "]" + " ataque: " + "[" + Jugador2.tablero[i].ataque + "]");
+                                                Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "|| vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                             }
 
 
@@ -983,7 +983,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "||" + " vida: " + "[" + Jugador2.mano[i].vida + "]" + " ataque: " + "[" + Jugador2.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -1193,7 +1193,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "||" + " vida: " + "[" + Jugador1.mano[i].vida + "]" + " ataque: " + "[" + Jugador1.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -1394,7 +1394,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "||" + " vida: " + "[" + Jugador2.mano[i].vida + "]" + " ataque: " + "[" + Jugador2.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -1604,7 +1604,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador1.mano[i].nombre + "||" + " vida: " + "[" + Jugador1.mano[i].vida + "]" + " ataque: " + "[" + Jugador1.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
@@ -1805,7 +1805,7 @@ namespace ProyectoFinal
                             {
                                 for (int i = 0; i < posiblesAtacantes1.Count; i++)
                                 {
-                                    Console.WriteLine("[" + i + "]" + Jugador2.mano[i].nombre + "||" + " vida: " + "[" + Jugador2.mano[i].vida + "]" + " ataque: " + "[" + Jugador2.mano[i].ataque + "]");
+                                    Console.WriteLine("[" + i + "]" + posiblesAtacantes1[i].nombre + "||" + " vida: " + "[" + posiblesAtacantes1[i].vida + "]" + " ataque: " + "[" + posiblesAtacantes1[i].ataque + "]");
                                 }
                                 decision1 = "0";
                                 while (decision1 == "0")
