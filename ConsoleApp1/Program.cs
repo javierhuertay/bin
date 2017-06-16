@@ -23,6 +23,7 @@ namespace ConsoleApp1
             Cartas warGolem = new Cartas(7, 7, 7, "War Golem");
             Cartas coreHound = new Cartas(7, 9, 5, "Core Hound");
             Cartas theCoin = new Cartas(0, 0, 0, "the coin");
+            Cartas EsbirroPlata = new Cartas(0, 1, 1, "Esbirro de Plata");
             listaCartas.Add(wisp);
             listaCartas.Add(wisp);
             listaCartas.Add(wisp);
