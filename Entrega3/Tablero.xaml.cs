@@ -19,6 +19,7 @@ namespace Entrega3
     /// </summary>
     public partial class Tablero : Window
     {
+        MainWindow tablero = new MainWindow();
         public Tablero()
         {
             InitializeComponent();

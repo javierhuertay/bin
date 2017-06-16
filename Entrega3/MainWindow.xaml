@@ -14,7 +14,7 @@
         <TextBox Name="TextBoxJugador1" HorizontalAlignment="Left" Height="70" Margin="70,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
         <TextBox Name="TextBoxJugador2" HorizontalAlignment="Left" Height="70" Margin="915,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
         <Label Name="LabelHeroes" Content="Ingresen sus heroes" HorizontalAlignment="Left" Height="60" Margin="430,470,0,0" VerticalAlignment="Top" Width="360" FontSize="36"/>
-        <TextBox Name="TextBoxHeroe1" HorizontalAlignment="Left" Height="70" Margin="70,470,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
+        <TextBox Name="TextBoxHeroe1" HorizontalAlignment="Left" Height="70" Margin="70,470,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24" d:IsLocked="True"/>
         <TextBox Name="TextBoxHeroe2" HorizontalAlignment="Left" Height="70" Margin="915,470,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24" TextChanged="TextBoxHeroe2_TextChanged"/>
         <Label Name="Advertencia1" Visibility="Hidden" Content="Ingrese bien su heroe" HorizontalAlignment="Left" Height="45" Margin="70,540,0,0" VerticalAlignment="Top" Width="245" FontSize="20"/>
         <Label Name="Advertencia2" Visibility="Hidden" Content="Ingrese bien su heroe" HorizontalAlignment="Left" Height="45" Margin="915,540,0,0" VerticalAlignment="Top" Width="245" FontSize="20"/>
