@@ -148,7 +148,8 @@ namespace ConsoleApp1
                     Jugador1.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                     bool condicionTurno = true; //Para mantenerse en el menu.
                     List<Cartas> posiblesAtacantes1 = new List<Cartas>(Jugador1.tablero); //Asi la misma carta no puede atacar dos veces.
-                    int manaTurno = Jugador1.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
+                    int manaTurno = 0;
+                    manaTurno += Jugador1.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
                     Console.WriteLine("Turno de " + Jugador1.nombre);
                     bool condicionPoder = true; //Para poder usar solo una vez el poder por turno
                     while (condicionTurno)
@@ -348,7 +349,8 @@ namespace ConsoleApp1
                     Jugador2.ManaGrowth(); //Jugador gana 1 de mana al comienzo del turno.
                     bool condicionTurno = true; //Para mantenerse en el menu.
                     List<Cartas> posiblesAtacantes1 = new List<Cartas>(Jugador2.tablero); ; //Asi la misma carta no puede atacar dos veces.
-                    int manaTurno = Jugador2.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
+                    int manaTurno = 0;
+                    manaTurno += Jugador2.mana; //Mana a la que se le puede restar, si no partiria de 0 practicamente todas las rondas.
                     Console.WriteLine("Turno de " + Jugador2.nombre);
                     bool condicionPoder = true; //Para poder usar solo una vez el poder por turno
                     while (condicionTurno)
