@@ -180,7 +180,7 @@ namespace ConsoleApp1
                                 {
                                     decision1 = "1";
                                 }
-                                else if (Mano1[numeroDeCartaInt1].nombre == "theCoin")
+                                if (Mano1[numeroDeCartaInt1].nombre == "theCoin")
                                 {
                                     manaTurno += 1;
                                     Mano1.Remove(Mano1[numeroDeCartaInt1]);
