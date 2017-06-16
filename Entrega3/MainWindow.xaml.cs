@@ -80,8 +80,6 @@ namespace Entrega3
             List<Cartas> TableroJugador2 = new List<Cartas>();
             Jugador Jugador1 = new Jugador(0, 30, 0, Mano1, Mazo1, NombreJugador1, TableroJugador1, HeroeJugador1);
             Jugador Jugador2 = new Jugador(0, 30, 0, Mano2, Mazo2, NombreJugador2, TableroJugador2, HeroeJugador2);
-            listaJugadores.Add(Jugador1);
-            listaJugadores.Add (Jugador2);
             Tablero tablero = new Tablero(Jugador1);
             tablero.Show();
             this.Close();
@@ -116,15 +114,13 @@ namespace Entrega3
             }
             else
             {
-                comenzar(TextBoxJugador1.Text, TextBoxJugador2.Text, TextBoxHeroe1.Text, TextBoxHeroe2.Text);
-                
+                comenzar(TextBoxJugador1.Text, TextBoxJugador2.Text, TextBoxHeroe1.Text, TextBoxHeroe2.Text);  
             }
         }
 
         private void TextBoxHeroe2_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
-
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

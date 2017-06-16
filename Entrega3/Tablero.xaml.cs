@@ -23,12 +23,12 @@ namespace Entrega3
         {
             get
             {
-                return Jugador1;
+                return this.Jugador1;
             }
 
             set
             {
-                Jugador1 = value;
+                this.Jugador1 = value;
             }
         }
 
