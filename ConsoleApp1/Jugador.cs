@@ -17,8 +17,9 @@ namespace ConsoleApp1
         internal int damage;
         internal int armadura;
         public string heroe;
-        public Jugador(int armadura, int vida, int mana, List<Cartas> mano, List<Cartas> mazo, string nombre, List<Cartas> tablero, string heroe)
+        public Jugador(int armadura, int vida, int mana, List<Cartas> mano, List<Cartas> mazo, string nombre, List<Cartas> tablero, string heroe, int damage)
         {
+            this.damage = damage;
             this.vida = vida;
             this.mana = mana;
             this.mano = mano;
@@ -57,65 +58,44 @@ namespace ConsoleApp1
         {
             jugador.vida -= posiblesAtacantes[cartaElegida].ataque;
         }
-        public void UsarPoder(Jugador JugadorPoder, Jugador JugadorOponente)
+        public void UsarPoder(Jugador JugadorPoder, Jugador JugadorOponente, Cartas carta)
         {
             if (JugadorPoder.heroe == "Warrior" || JugadorPoder.heroe == "warrior")
             {
-                if (JugadorPoder.mana > 2)
-                {
-                    JugadorPoder.mana -= 2;
-                    JugadorPoder.armadura += 2;
-                }
-                else
-                {
-                    Console.WriteLine("No tienes suficiente mana para usar el poder");
-                }
-
+                JugadorPoder.armadura += 2;
             }
             else if (JugadorPoder.heroe == "Hunter" || JugadorPoder.heroe == "hunter")
             {
-                if (JugadorPoder.mana > 2)
-                {
-                    JugadorPoder.mana -= 2;
-                    JugadorOponente.vida -= 2;
-                }
-                else
-                {
-                    Console.WriteLine("No tienes suficiente mana para usar el poder");
-                }
+                JugadorOponente.vida -= 2;
             }
             else if (JugadorPoder.heroe == "Druid" || JugadorPoder.heroe == "druid")
             {
-                JugadorPoder.vida -= 2;
-                JugadorPoder.mana -= 2;
+                JugadorPoder.damage += 1;
+                JugadorPoder.armadura += 1;
             }
+ 
             else if (JugadorPoder.heroe == "Mage" || JugadorPoder.heroe == "mage")
-            {
-                JugadorPoder.mana -= 2;
+            { 
                 JugadorOponente.vida -= 1;
             }
             else if (JugadorPoder.heroe == "Paladin" || JugadorPoder.heroe == "paladin")
             {
-                JugadorPoder.mana -= 2;
-
-
+                JugadorPoder.tablero.Add(carta);
             }
             else if (JugadorPoder.heroe == "Priest" || JugadorPoder.heroe == "priest")
             {
-                JugadorPoder.mana -= 2;
-
+                JugadorPoder.vida += 2;
             }
             else if (JugadorPoder.heroe == "Rogue" || JugadorPoder.heroe == "rogue")
             {
-
+                JugadorPoder.damage += 1;
             }
             else if (JugadorPoder.heroe == "Shaman" || JugadorPoder.heroe == "shaman")
             {
-
             }
             else if (JugadorPoder.heroe == "Warlock" || JugadorPoder.heroe == "warlock")
             {
-
+                JugadorPoder.vida -= 2;
             }
         }
     }
