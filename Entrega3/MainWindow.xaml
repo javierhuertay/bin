@@ -11,7 +11,7 @@
         <Label Name ="LabelJugador1" Content="Jugador 1" HorizontalAlignment="Left" Height="85" Margin="90,205,0,0" VerticalAlignment="Top" Width="225" FontSize="48"/>
         <Label Name ="LabelJugador2" Content="Jugador 2" HorizontalAlignment="Left" Height="85" Margin="945,205,0,0" VerticalAlignment="Top" Width="275" FontSize="48"/>
         <Label Name="LabelNombresJugadores" Content="Ingresen sus nombres" HorizontalAlignment="Left" Height="70" Margin="430,315,0,0" VerticalAlignment="Top" Width="360" FontSize="36"/>
-        <TextBox Name="TextBoxJugador1" HorizontalAlignment="Left" Height="70" Margin="70,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
+        <TextBox x:Name="TextBoxJugador1" x:FieldModifier="public"  HorizontalAlignment="Left" Height="70" Margin="70,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
         <TextBox Name="TextBoxJugador2" HorizontalAlignment="Left" Height="70" Margin="915,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>
         <Label Name="LabelHeroes" Content="Ingresen sus heroes" HorizontalAlignment="Left" Height="60" Margin="430,470,0,0" VerticalAlignment="Top" Width="360" FontSize="36"/>
         <TextBox Name="TextBoxHeroe1" HorizontalAlignment="Left" Height="70" Margin="70,470,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" FontSize="24"/>

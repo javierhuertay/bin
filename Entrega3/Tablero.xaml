@@ -8,6 +8,10 @@
         Title="Tablero" Height="800" Width="1280">
     <Grid>
         <Label x:Name="NombreJugadorShow" x:FieldModifier="public" Content="" HorizontalAlignment="Left" Height="135" Margin="50,35,0,0" VerticalAlignment="Top" Width="360"/>
+        <Label Name="VidaJugador" HorizontalAlignment="Left" Height="95" Margin="1045,35,0,0" VerticalAlignment="Top" Width="190">
+            <Label Content="Label"/>
+        </Label>
+        <Button Content="Button" HorizontalAlignment="Left" Height="195" Margin="205,420,0,0" VerticalAlignment="Top" Width="495" Click="Button_Click"/>
 
     </Grid>
 </Window>

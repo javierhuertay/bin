@@ -22,6 +22,7 @@ namespace Entrega3
     public partial class MainWindow : Window
     {
         List<Cartas> listaCartas = new List<Cartas>();
+        public List<Jugador> listaJugadores = new List<Jugador>();
         Cartas wisp = new Cartas(0, 1, 1, "wisp");
         Cartas murlocRaider = new Cartas(1, 1, 2, "Murloc Raider");
         Cartas bloodfenRaptor = new Cartas(2, 3, 2, "Bloodfen Raptor");
@@ -38,7 +39,7 @@ namespace Entrega3
             InitializeComponent();
         }
 
-        private void comenzar (string NombreJugador1, string NombreJugador2, string HeroeJugador1, string HeroeJugador2)
+        public void comenzar (string NombreJugador1, string NombreJugador2, string HeroeJugador1, string HeroeJugador2)
         {
             listaCartas.Add(wisp);
             listaCartas.Add(wisp);
@@ -79,9 +80,14 @@ namespace Entrega3
             List<Cartas> TableroJugador2 = new List<Cartas>();
             Jugador Jugador1 = new Jugador(0, 30, 0, Mano1, Mazo1, NombreJugador1, TableroJugador1, HeroeJugador1);
             Jugador Jugador2 = new Jugador(0, 30, 0, Mano2, Mazo2, NombreJugador2, TableroJugador2, HeroeJugador2);
+            listaJugadores.Add(Jugador1);
+            listaJugadores.Add (Jugador2);
+            Tablero tablero = new Tablero(Jugador1);
+            tablero.Show();
+            this.Close();
         }
 
-        private void Boton1_Click(object sender, RoutedEventArgs e)
+        public void Boton1_Click(object sender, RoutedEventArgs e)
         {
             if ((TextBoxHeroe1.Text != "Druid") && (TextBoxHeroe1.Text != "Hunter") && (TextBoxHeroe1.Text != "Mage") && (TextBoxHeroe1.Text != "Paladin") && (TextBoxHeroe1.Text != "Priest") && (TextBoxHeroe1.Text != "Rogue") && (TextBoxHeroe1.Text != "Shaman") && (TextBoxHeroe1.Text != "Warlock") && (TextBoxHeroe1.Text != "Warrior") && (TextBoxHeroe1.Text != "druid") && (TextBoxHeroe1.Text != "hunter") && (TextBoxHeroe1.Text != "mage") && (TextBoxHeroe1.Text != "paladin") && (TextBoxHeroe1.Text != "priest") && (TextBoxHeroe1.Text != "rogue") && (TextBoxHeroe1.Text != "shaman") && (TextBoxHeroe1.Text != "warlock") && (TextBoxHeroe1.Text != "warrior"))
             {
@@ -96,7 +102,6 @@ namespace Entrega3
                     Advertencia1.Visibility = System.Windows.Visibility.Visible;
                 }
             }
-
             else if ((TextBoxHeroe2.Text != "Druid") && (TextBoxHeroe2.Text != "Hunter") && (TextBoxHeroe2.Text != "Mage") && (TextBoxHeroe2.Text != "Paladin") && (TextBoxHeroe2.Text != "Priest") && (TextBoxHeroe2.Text != "Rogue") && (TextBoxHeroe2.Text != "Shaman") && (TextBoxHeroe2.Text != "Warlock") && (TextBoxHeroe2.Text != "Warrior") && (TextBoxHeroe2.Text != "druid") && (TextBoxHeroe2.Text != "hunter") && (TextBoxHeroe2.Text != "mage") && (TextBoxHeroe2.Text != "paladin") && (TextBoxHeroe2.Text != "priest") && (TextBoxHeroe2.Text != "rogue") && (TextBoxHeroe2.Text != "shaman") && (TextBoxHeroe2.Text != "warlock") && (TextBoxHeroe2.Text != "warrior"))
             {
                 if ((TextBoxHeroe1.Text != "Druid") && (TextBoxHeroe1.Text != "Hunter") && (TextBoxHeroe1.Text != "Mage") && (TextBoxHeroe1.Text != "Paladin") && (TextBoxHeroe1.Text != "Priest") && (TextBoxHeroe1.Text != "Rogue") && (TextBoxHeroe1.Text != "Shaman") && (TextBoxHeroe1.Text != "Warlock") && (TextBoxHeroe1.Text != "Warrior") && (TextBoxHeroe1.Text != "druid") && (TextBoxHeroe1.Text != "hunter") && (TextBoxHeroe1.Text != "mage") && (TextBoxHeroe1.Text != "paladin") && (TextBoxHeroe1.Text != "priest") && (TextBoxHeroe1.Text != "rogue") && (TextBoxHeroe1.Text != "shaman") && (TextBoxHeroe1.Text != "warlock") && (TextBoxHeroe1.Text != "warrior"))
@@ -112,9 +117,7 @@ namespace Entrega3
             else
             {
                 comenzar(TextBoxJugador1.Text, TextBoxJugador2.Text, TextBoxHeroe1.Text, TextBoxHeroe2.Text);
-                Tablero tablero = new Tablero();
-                tablero.Show();
-                this.Close();
+                
             }
         }
 

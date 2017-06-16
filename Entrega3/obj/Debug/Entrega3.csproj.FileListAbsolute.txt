@@ -14,3 +14,19 @@ c:\users\lucas\documents\visual studio 2017\Projects\Entrega3\Entrega3\obj\Debug
 c:\users\lucas\documents\visual studio 2017\Projects\Entrega3\Entrega3\obj\Debug\Entrega3.pdb
 C:\Users\Lucas\documents\visual studio 2017\Projects\Entrega3\Entrega3\obj\Debug\Tablero.g.cs
 C:\Users\Lucas\documents\visual studio 2017\Projects\Entrega3\Entrega3\obj\Debug\Tablero.baml
+C:\Users\Lucas\Desktop\bin\Entrega3\bin\Debug\Entrega3.exe.config
+C:\Users\Lucas\Desktop\bin\Entrega3\bin\Debug\Entrega3.exe
+C:\Users\Lucas\Desktop\bin\Entrega3\bin\Debug\Entrega3.pdb
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\MainWindow.g.cs
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Tablero.g.cs
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\App.g.cs
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3_MarkupCompile.cache
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3_MarkupCompile.lref
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\MainWindow.baml
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Tablero.baml
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.g.resources
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.Properties.Resources.resources
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.csproj.GenerateResource.Cache
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.exe
+C:\Users\Lucas\Desktop\bin\Entrega3\obj\Debug\Entrega3.pdb
