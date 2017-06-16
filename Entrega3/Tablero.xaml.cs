@@ -19,37 +19,10 @@ namespace Entrega3
     /// </summary>
     public partial class Tablero : Window
     {
-        public Jugador Jugador1
+        MainWindow tablero = new MainWindow();
+        public Tablero()
         {
-            get
-            {
-                return this.Jugador1;
-            }
-
-            set
-            {
-                this.Jugador1 = value;
-            }
-        }
-
-        public Tablero(Jugador Jugador1)
-        {
-            this.Jugador1 = Jugador1;
             InitializeComponent();
-        }
-
-        
-
-        public void TableroJugador1 (Jugador Jugador1)
-        {
-            NombreJugadorShow.Content = Jugador1.nombre;
-            VidaJugador.Content = Jugador1.vida;
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            TableroJugador1(Jugador1);
         }
     }
 }
