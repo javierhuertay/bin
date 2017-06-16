@@ -4,3 +4,9 @@ C:\Users\Rodrigo\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\b
 C:\Users\Rodrigo\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
 C:\Users\Rodrigo\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\Rodrigo\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\javie\OneDrive\Documentos\GitHub\bin\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

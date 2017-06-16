@@ -86,18 +86,23 @@ namespace ConsoleApp1
             }
             else if (JugadorPoder.heroe == "Druid" || JugadorPoder.heroe == "druid")
             {
-
+                JugadorPoder.vida -= 2;
+                JugadorPoder.mana -= 2;
             }
             else if (JugadorPoder.heroe == "Mage" || JugadorPoder.heroe == "mage")
             {
-
+                JugadorPoder.mana -= 2;
+                JugadorOponente.vida -= 1;
             }
             else if (JugadorPoder.heroe == "Paladin" || JugadorPoder.heroe == "paladin")
             {
+                JugadorPoder.mana -= 2;
+
 
             }
             else if (JugadorPoder.heroe == "Priest" || JugadorPoder.heroe == "priest")
             {
+                JugadorPoder.mana -= 2;
 
             }
             else if (JugadorPoder.heroe == "Rogue" || JugadorPoder.heroe == "rogue")
