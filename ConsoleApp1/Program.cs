@@ -23,7 +23,7 @@ namespace ConsoleApp1
             Cartas warGolem = new Cartas(7, 7, 7, "War Golem");
             Cartas coreHound = new Cartas(7, 9, 5, "Core Hound");
             Cartas theCoin = new Cartas(0, 0, 0, "the coin");
-            Cartas EsbirroPlata = new Cartas(0, 1, 1, "Esbirro de Plata");
+            Cartas reclutaManoDePlata = new Cartas(0, 1, 1, "Esbirro de Plata");
             listaCartas.Add(wisp);
             listaCartas.Add(wisp);
             listaCartas.Add(wisp);
@@ -62,14 +62,14 @@ namespace ConsoleApp1
             Console.WriteLine("Jugador 2:");
             string name2 = Console.ReadLine();
 
-            Console.WriteLine(name1 + ", ¿Seras Hunter o Warrior?");
+            Console.WriteLine(name1 + ", ¿Que heroe quieres ser?");
             string heroe1 = Console.ReadLine();
-            while (heroe1 != "Warrior" && heroe1 != "warrior" && heroe1 != "Hunter" && heroe1 != "hunter")
+            while (heroe1 != "Warrior" && heroe1 != "warrior" && heroe1 != "Hunter" && heroe1 != "hunter" && heroe1 != "Druid" && heroe1 != "druid" && heroe1 != "Paladin" && heroe1 != "paladin")
             {
                 Console.WriteLine("Por favor ingrese un heroe valido");
                 heroe1 = Console.ReadLine();
             }
-            Console.WriteLine(name2 + ", ¿Seras Hunter o Warrior?");
+            Console.WriteLine(name2 + ", ¿Que heroe quieres ser?");
             string heroe2 = Console.ReadLine();
             while (heroe2 != "Warrior" && heroe2 != "warrior" && heroe2 != "Hunter" && heroe2 != "hunter")
             {
@@ -90,9 +90,12 @@ namespace ConsoleApp1
             List<Cartas> TableroJugador1 = new List<Cartas>();
             List<Cartas> TableroJugador2 = new List<Cartas>();
 
-            Jugador Jugador1 = new Jugador(0, 30, 0, Mano1, Mazo1, name1, TableroJugador1, heroe1);
-            Jugador Jugador2 = new Jugador(0, 30, 0, Mano2, Mazo2, name2, TableroJugador2, heroe2);
+            //Damages
+            int damage1 = 0;
+            int damage2 = 1;
 
+            Jugador Jugador1 = new Jugador(0, 30, 0, Mano1, Mazo1, name1, TableroJugador1, heroe1, damage1);
+            Jugador Jugador2 = new Jugador(0, 30, 0, Mano2, Mazo2, name2, TableroJugador2, heroe2, damage2);
             Console.WriteLine("Comienza el juego");
             bool condicionJuego = true;
             Random rmd = new Random();
@@ -280,7 +283,7 @@ namespace ConsoleApp1
                             }
                             else
                             {
-                                Jugador1.UsarPoder(Jugador1, Jugador2);
+                                Jugador1.UsarPoder(Jugador1, Jugador2, reclutaManoDePlata);
                                 condicionPoder = false;
                                 if (Jugador2.vida <= 0)
                                 {
@@ -450,8 +453,6 @@ namespace ConsoleApp1
                                         {
                                             Console.WriteLine("[" + i + "]" + Jugador1.tablero[i].nombre + "|| vida: " + "[" + Jugador1.tablero[i].vida + "]" + " ataque: " + "[" + Jugador1.tablero[i].ataque + "]");
                                         }
-
-
                                         string numeroDeTarget1 = Console.ReadLine();
                                         int numeroDeTargetInt1 = Int32.Parse(numeroDeTarget1);
                                         Jugador2.AtacarCarta(posiblesAtacantes1, cartaElegidaInt1, Jugador1.tablero, numeroDeTargetInt1);
@@ -481,7 +482,7 @@ namespace ConsoleApp1
                             }
                             else
                             {
-                                Jugador2.UsarPoder(Jugador2, Jugador1);
+                                Jugador2.UsarPoder(Jugador2, Jugador1, reclutaManoDePlata);
                                 condicionPoder = false;
                                 if (Jugador1.vida <= 0)
                                 {
